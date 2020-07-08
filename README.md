@@ -18,20 +18,13 @@ python T0_download_dataset.py
 ```
 The code will download the dataset, analysis it and record the statistics including the number of graphs as well as maximum graph size, ridius and node degree.
 
-#2 To prepare the dataset, open the file "T2_prepare_dataset_training.py" in the corresponding dataset folder and change the data augmentation number at Line 18. Currently it is set to 1000. Numbers less than 1000 are reasonable. After setting the data augmentation rate, run the following commands:
-
-```
-python T2_prepare_dataset_testing.py
-python T2_prepare_dataset_training.py
-```
-
- #3 To train the network, open the file "T3_training.py" and change the NUM_REPEAT at line 28 to the augmentation rate in step 2. Then change the idx_fold from 0 to 9 to select the fold to train and test. After the settings, run the following commend:
+#2 To train the network, open the file "T3_training_EndToEnd.py" and change the NUM_EPOCHS in Line 33. Then change the idx_fold from 0 to 9 to select the fold to train and test. After the settings, run the following commend:
  
 ```
-python T3_training.py
+python T3_training_EndToEnd.py
 ```
 
-After training each fold, the best best validation accuracy will show in the commend line.
+After training each fold, the best best validation accuracy will show in the commend line together with a histogram of all the test results.
 
 ## Contact
 If you have any questions, please feel free to contact Yecheng Lyu at ylyu@wpi.edu
