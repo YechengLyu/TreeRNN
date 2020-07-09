@@ -21,6 +21,7 @@ The code will download the dataset, and copy all the code to the dataset folder.
 
 #2 To analysis it and record the statistics including the number of graphs as well as maximum graph size, ridius and node degree, run the following command:
 ```
+cd MUTAG # get into your target dataset folder.
 python T1_data_analysis.py
 ```
 
