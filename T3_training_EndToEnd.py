@@ -30,7 +30,7 @@ NUM_DEGREE= myFile[1]
 NUM_DEPTH = myFile[2]
 NUM_NODES = myFile[3]
 
-NUM_EPOCHS = 1000
+NUM_EPOCHS = 500
 
 # hdf5_train_path = dataset_name+'train_'+str(NUM_REPEAT)+'x.hdf5'
 # hdf5_test_path = hdf5_train_path
