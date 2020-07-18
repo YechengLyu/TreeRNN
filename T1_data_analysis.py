@@ -71,3 +71,28 @@ for idx_graph in range(NUM_GRAPH):
 print('NUM_GRAPH',NUM_GRAPH,'NUM_DEGREE',NUM_DEGREE.max(),'NUM_DEPTH',NUM_DEPTH.max(),'NUM_NODES',NUM_NODES.max())
 #%%
 np.savetxt("statistics.csv", np.array([NUM_GRAPH,NUM_DEGREE.max(),NUM_DEPTH.max(),NUM_NODES.max()],dtype=np.int), delimiter=",",fmt='%d')
+
+#%% organize the sample list to make balanced folds
+import itertools
+label_id, count = np.unique(label_raw,return_counts=True)
+
+NUM_LABEL = len(label_id)
+label_idx = []
+for i_label in range(NUM_LABEL):
+    label_idx.append(np.where(label_raw==label_id[i_label])[0])
+
+sample_folds = []
+for i_fold in range(10):
+    sample_folds.append([])
+    for i_label in range(NUM_LABEL):
+        len_label = len(label_idx[i_label])
+        start = np.int(np.round(len_label/10*i_fold))
+        end   = np.int(np.round(len_label/10*(i_fold+1))+1)
+        sample_folds[i_fold].append(list(label_idx[i_label][start:end]))
+
+
+merged = list(itertools.chain(*sample_folds))
+merged = list(itertools.chain(*merged))
+idx_list = np.array(merged)
+#%% save reordered samples
+np.savetxt("idx_list.csv", idx_list , delimiter=",",fmt='%d')
